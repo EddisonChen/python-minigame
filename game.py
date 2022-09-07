@@ -7,19 +7,16 @@ csvfile = "log.csv"
 f = open(csvfile, "w+")
 f.close()
 
-# rows=[]
-# with open('log.csv', newline='') as csvfile:
-#     csvreader=csv.reader(csvfile)
-#     header=next(csvreader)
-#     for row in csvreader:
-#         rows.append(row)
+class MyCharacter:
+    def __init__(self, title, ability):
+        self.title = title
+        self.ability = ability
 
-# csvfile = open('log.csv', 'r')
-# reader = csv.DictReader(csvfile, "t")
-# all_lines = list(reader)
-# number_of_lines = len(all_lines) - 1
+character_1 = MyCharacter("BeanMan", "Bean Toss")
+character_2 = MyCharacter("EggMan", "Egg Toss")
+character_3 = MyCharacter("SaladBoy", "Salad Toss")
 
-def fourth_decision(surrender_fight):
+def fourth_decision(surrender_fight, char):
     csvfile = open('log.csv', 'r')
     reader = csv.DictReader(csvfile, "t")
     all_lines = list(reader)
@@ -37,7 +34,7 @@ def fourth_decision(surrender_fight):
         print("**************************************************************************************************************")
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
-        print("*    you become a permanent test subject for the united states government                                    *")
+        print(f"*  you become a permanent test subject for the united states government because of your {char.title} powers.*")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         print("**************************************************************************************************************")
@@ -63,7 +60,7 @@ def fourth_decision(surrender_fight):
         print("**************************************************************************************************************")
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
-        print("*    you beat those soldiers up very easily.                                                                 *")
+        print(f"*   you beat those soldiers up very easily using the ultimate power of {char.ability}                       *")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         print("**************************************************************************************************************")
@@ -88,10 +85,10 @@ def fourth_decision(surrender_fight):
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         surrender_fight = input("surrender/fight?")
-        fourth_decision(surrender_fight)
+        fourth_decision(surrender_fight, char)
 
 
-def third_decision(help_hijack):
+def third_decision(help_hijack, char):
     if help_hijack.lower() == "help":
         data = ["help"]
         with open('log.csv', 'a') as csvfile:
@@ -100,7 +97,7 @@ def third_decision(help_hijack):
             csvfile.close()
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
-        print("*    the careful gentle astronauts have mercy on your weary soul.                                            *")
+        print(f"*    the careful gentle astronauts have mercy on your weary {char.title} soul.                              *")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         print("**************************************************************************************************************")
@@ -132,11 +129,11 @@ def third_decision(help_hijack):
         print("**************************************************************************************************************")
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
-        print("*    do you surrender or do you fight?                                                                       *")
+        print(f"*    do you surrender or do you fight using {char.ability}?                                                 *")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         surrender_fight = input("surrender/fight?")
-        fourth_decision(surrender_fight)
+        fourth_decision(surrender_fight, char)
     else:
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
@@ -144,9 +141,9 @@ def third_decision(help_hijack):
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         help_hijack = input("help/hijack")
-        third_decision(help_hijack)
+        third_decision(help_hijack, char)
 
-def second_decision(drill_motor):
+def second_decision(drill_motor, char):
     if drill_motor.lower() == 'drill':
         data = ["drill"]
         with open('log.csv', 'a') as csvfile:
@@ -181,7 +178,7 @@ def second_decision(drill_motor):
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         help_hijack = input("help/hijack")
-        third_decision(help_hijack)
+        third_decision(help_hijack, char)
     else:
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
@@ -189,10 +186,10 @@ def second_decision(drill_motor):
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         help_hijack = input("help/hijack")
-        third_decision(help_hijack)
+        third_decision(help_hijack, char)
 
 
-def first_decision(swim_climb):
+def first_decision(swim_climb, char):
     if swim_climb.lower() == "swim":
         data = ["swim"]
         with open('log.csv', 'a') as csvfile:
@@ -211,12 +208,12 @@ def first_decision(swim_climb):
         print("**************************************************************************************************************")
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
-        print("*    even though you are leva-proof, you do not have the power to hold your breath for very long  .          *")
+        print("*    even though you are lava-proof, you do not have the power to hold your breath for very long  .          *")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
-        print("*    you feel your lungs giving out. you can eitehr:                                                         *")
+        print("*    you feel your lungs giving out. you can either:                                                         *")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         print("**************************************************************************************************************")
@@ -230,7 +227,7 @@ def first_decision(swim_climb):
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         drill_motor = input("drill/motor?")
-        second_decision(drill_motor)
+        second_decision(drill_motor, char)
     elif swim_climb.lower() == "climb":
         data = ["climb"]
         with open('log.csv', 'a') as csvfile:
@@ -239,23 +236,24 @@ def first_decision(swim_climb):
             csvfile.close()
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
-        print("*    sadly you are not half monkey. You land back on the volcano floor like a loser.                         *")
+        print(f"*sadly you are not half monkey. You are merely {char.title}. You land back on the volcano floor like a loser.*")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         intro_point()
     else: 
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
-        print("*    hey pick one of the 2 options buddy                                                                     *")
+        print(f"*    hey pick one of the 2 options {char.title}                                                             *")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
         swim_climb = input("    swim or climb?  ")
-        first_decision(swim_climb)
+        first_decision(swim_climb, char)
 
-def intro_point():
+def intro_point(char):
+    print(char.title)
     print("**************************************************************************************************************")
     print("*                                                                                                            *")
-    print("*    welcome weary traveler. You have landed in an active volcano after jumping out of a plane.              *")
+    print(f"*    welcome {char.title}. You have landed in an active volcano after jumping out of a plane.              *")
     print("*                                                                                                            *") 
     print("**************************************************************************************************************")
     print("*                                                                                                            *")
@@ -271,6 +269,20 @@ def intro_point():
     print("*                                                                                                            *")
     print("**************************************************************************************************************")
     swim_climb = input("    swim or climb?  ")
-    first_decision(swim_climb)
+    first_decision(swim_climb, char)
 
-intro_point()
+def character_selection():
+    char = character_1
+    character_select = int(input("would you rather be BeanMan, EggMan, or SaladBoy? Enter 1, 2, or 3:   "))
+    if character_select == 1:
+        char =  character_1
+    elif character_select == 2:
+        char = character_2
+    elif character_select == 3:
+        char = character_3
+    else:
+        character_selection()
+    intro_point(char)
+
+character_selection()
+    
