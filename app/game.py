@@ -105,7 +105,7 @@ def third_decision(help_hijack, char):
         print("*    they put you out of your misery using the cannons built into the international space station. try again *")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
-        intro_point()
+        intro_point(char)
     elif help_hijack.lower() == "hijack":
         data = ["hijack"]
         with open('log.csv', 'a') as csvfile:
@@ -155,7 +155,7 @@ def second_decision(drill_motor, char):
         print("*    you are now at the center of the earth. good job. you rest here for eterity. try again.                 *")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
-        intro_point()
+        intro_point(char)
     elif drill_motor.lower() == "motor":
         data = ["motor"]
         with open('log.csv', 'a') as csvfile:
@@ -239,7 +239,7 @@ def first_decision(swim_climb, char):
         print(f"*sadly you are not half monkey. You are merely {char.title}. You land back on the volcano floor like a loser.*")
         print("*                                                                                                            *")
         print("**************************************************************************************************************")
-        intro_point()
+        intro_point(char)
     else: 
         print("**************************************************************************************************************")
         print("*                                                                                                            *")
